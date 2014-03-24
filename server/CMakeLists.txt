@@ -22,6 +22,7 @@ add_library(endpoints_services_addon SHARED
     ${TMPSRC}/endpoints_parameters.h        ${TMPSRC}/endpoints_services_factory.h
     ${TMPSRC}/endpoints_services_addon.cpp  ${TMPSRC}/endpoints_services_module.cpp
 )
+target_link_libraries(endpoints_services_addon opcuabinary)
 
 
 set(TMPSRC binary_protocol/src)
@@ -47,12 +48,14 @@ add_library(standard_ns_addon SHARED
     ${TMPSRC}/standard_namespace_addon.cpp  ${TMPSRC}/standard_namespace.h
     ${TMPSRC}/standard_namespace.cpp        ${TMPSRC}/standard_namespace_module.cpp
 )
+target_link_libraries(standard_ns_addon opcuabinary)
 
 set(TMPSRC address_space/src)
 add_library(address_space_addon SHARED 
     ${TMPSRC}/address_space_addon.cpp  ${TMPSRC}/address_space_internal.cpp  ${TMPSRC}/address_space_module.cpp
     ${TMPSRC}/address_space_addon.h    ${TMPSRC}/address_space_internal.h
 )
+target_link_libraries(address_space_addon opcuabinary opcuacommon)
 
 set(TMPSRC builtin_server/src)
 add_library(builtin_server SHARED 
@@ -64,7 +67,7 @@ set(TMPSRC xml_address_space_loader/src)
 add_library(xml_address_space_loader_addon SHARED 
 ${TMPSRC}/xml_address_space_addon.cpp  ${TMPSRC}/xml_address_space_loader.cpp  ${TMPSRC}/xml_address_space_loader.h  ${TMPSRC}/xml_address_space_module.cpp  ${TMPSRC}/xml_processor.h
 )
-target_link_libraries(xml_address_space_loader_addon  xml2)
+target_link_libraries(xml_address_space_loader_addon opcuacommon opcuabinary xml2)
 
 
 set(TMPSRC tcp_server/src)
@@ -79,6 +82,15 @@ add_executable(server
     ${TMPSRC}/daemon.cpp  ${TMPSRC}/daemon.h  ${TMPSRC}/server_main.cpp  ${TMPSRC}/server_options.cpp  ${TMPSRC}/server_options.h
 )
 target_link_libraries(server opcuabinary opcuacommon builtin_server ${Boost_LIBRARIES} dl)
+
+#example server
+#set(TMPSRC example/src)
+#add_executable(example_server 
+    #${TMPSRC}/daemon.cpp  ${TMPSRC}/daemon.h  ${TMPSRC}/server_main.cpp  ${TMPSRC}/server_options.cpp  ${TMPSRC}/server_options.h
+#)
+#target_link_libraries(example_server opcuabinary opcuacommon builtin_server ${Boost_LIBRARIES} dl)
+
+
 
 
 
