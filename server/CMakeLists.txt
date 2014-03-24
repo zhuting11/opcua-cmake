@@ -84,11 +84,11 @@ add_executable(server
 target_link_libraries(server opcuabinary opcuacommon builtin_server ${Boost_LIBRARIES} dl)
 
 #example server
-#set(TMPSRC example/src)
-#add_executable(example_server 
-    #${TMPSRC}/daemon.cpp  ${TMPSRC}/daemon.h  ${TMPSRC}/server_main.cpp  ${TMPSRC}/server_options.cpp  ${TMPSRC}/server_options.h
-#)
-#target_link_libraries(example_server opcuabinary opcuacommon builtin_server ${Boost_LIBRARIES} dl)
+set(TMPSRC example/src)
+add_executable(example_server 
+    ${TMPSRC}/daemon.cpp  ${TMPSRC}/daemon.h  ${TMPSRC}/server_main.cpp  ${TMPSRC}/server_options.cpp  ${TMPSRC}/server_options.h
+)
+target_link_libraries(example_server opcuabinary opcuacommon builtin_server ${Boost_LIBRARIES} dl)
 
 
 

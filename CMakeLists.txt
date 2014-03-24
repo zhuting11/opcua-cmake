@@ -15,10 +15,4 @@ add_subdirectory (core)
 add_subdirectory (client) 
 add_subdirectory (server) 
 
-#command line client
-#include_directories(/usr/include/libxml2/ ) #HACK!!! should not be necessary
-#include_directories(${CMAKE_SOURCE_DIR}/include )
-#include_directories(${CMAKE_SOURCE_DIR}/include_client )
-#add_executable(client src_client/opcua_main.cpp  src_client/opcua_options.cpp)
-#target_link_libraries(client opc_tcp_client OPCUA ${Boost_LIBRARIES})
 
