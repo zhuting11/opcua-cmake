@@ -17,9 +17,14 @@ add_library(opc_tcp_client SHARED
             src/stream_subscription.h 
               src/stream_view.h
 )
-target_link_libraries(opc_tcp_client opcuabinary opcuacommon xml2)
+target_link_libraries(opc_tcp_client opcuabinary opcuabinary)
+
+add_library(opcua_client SHARED src/client.cpp )
+target_link_libraries(opcua_client opc_tcp_client opcuabinary opcuacommon dl xml2)
 
 
 add_executable(client src/opcua_main.cpp  src/opcua_options.cpp)
-target_link_libraries(client opc_tcp_client ${Boost_LIBRARIES})
+target_link_libraries(client opc_tcp_client opcuabinary opcuacommon ${Boost_LIBRARIES} xml2 )
 
+add_executable(example_client src/example_main.cpp )
+target_link_libraries(example_client opcua_client opc_tcp_client  )

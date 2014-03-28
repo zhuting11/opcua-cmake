@@ -62,6 +62,7 @@ add_library(builtin_server SHARED
     ${TMPSRC}/builtin_server_addon.cpp    ${TMPSRC}/builtin_server_impl.cpp
     ${TMPSRC}/builtin_server_factory.cpp  ${TMPSRC}/builtin_server_impl.h
 )
+target_link_libraries(address_space_addon opcuabinary opcuacommon)
 
 set(TMPSRC xml_address_space_loader/src)
 add_library(xml_address_space_loader_addon SHARED 
@@ -81,14 +82,14 @@ set(TMPSRC exe/src)
 add_executable(server 
     ${TMPSRC}/daemon.cpp  ${TMPSRC}/daemon.h  ${TMPSRC}/server_main.cpp  ${TMPSRC}/server_options.cpp  ${TMPSRC}/server_options.h
 )
-target_link_libraries(server opcuabinary opcuacommon builtin_server ${Boost_LIBRARIES} dl)
+target_link_libraries(server opcuabinary opcuacommon ${Boost_LIBRARIES} dl)
 
 #example server
 set(TMPSRC example/src)
 add_executable(example_server 
     ${TMPSRC}/daemon.cpp  ${TMPSRC}/daemon.h  ${TMPSRC}/server_main.cpp  ${TMPSRC}/server_options.cpp  ${TMPSRC}/server_options.h
 )
-target_link_libraries(example_server opcuabinary opcuacommon builtin_server ${Boost_LIBRARIES} dl)
+target_link_libraries(example_server opcuabinary opcuacommon  ${Boost_LIBRARIES} dl)
 
 
 

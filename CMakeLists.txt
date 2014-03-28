@@ -1,6 +1,8 @@
 cmake_minimum_required (VERSION 2.6)
 project (OPCUAlib)
-SET(CMAKE_CXX_FLAGS "-std=c++0x") # just for testing
+#SET (CMAKE_CXX_COMPILER  "/usr/bin/clang++")
+SET(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -Wall ${CMAKE_CXX_FLAGS_DEBUG}" ) 
+#set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 
 FIND_PACKAGE( Boost 1.40 COMPONENTS program_options filesystem REQUIRED )
 INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
