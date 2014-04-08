@@ -13,6 +13,7 @@ include_directories(tcp_server/include )
 include_directories(builtin_server/include )
 include_directories(xml_address_space_loader/include )
 include_directories(/usr/include/libxml2/ ) #HACK!!! should not be necessary
+include_directories(server/include)
 
 
 
@@ -34,7 +35,7 @@ add_library(opcua_protocol SHARED
     ${TMPSRC}/opcua_protocol_addon.h
     ${TMPSRC}/opcua_protocol_module.cpp
 )
-target_link_libraries(opcua_protocol endpoints_services_addon xml2)
+target_link_libraries(opcua_protocol opcuacommon endpoints_services_addon xml2)
 
 set(TMPSRC services_registry/src)
 add_library(services_registry_addon SHARED 
@@ -42,6 +43,7 @@ add_library(services_registry_addon SHARED
     ${TMPSRC}/services_registry_factory.h    ${TMPSRC}/services_registry_module.cpp
     ${TMPSRC}/services_registry_impl.cpp
 )
+target_link_libraries(services_registry_addon  opcuabinary opcuacommon)
 
 set(TMPSRC standard_namespace/src)
 add_library(standard_ns_addon SHARED 
@@ -57,12 +59,12 @@ add_library(address_space_addon SHARED
 )
 target_link_libraries(address_space_addon opcuabinary opcuacommon)
 
-set(TMPSRC builtin_server/src)
-add_library(builtin_server SHARED 
-    ${TMPSRC}/builtin_server_addon.cpp    ${TMPSRC}/builtin_server_impl.cpp
-    ${TMPSRC}/builtin_server_factory.cpp  ${TMPSRC}/builtin_server_impl.h
-)
-target_link_libraries(address_space_addon opcuabinary opcuacommon)
+#set(TMPSRC builtin_server/src)
+#add_library(builtin_server SHARED 
+#${TMPSRC}/builtin_server_addon.cpp    ${TMPSRC}/builtin_server_impl.cpp
+#${TMPSRC}/builtin_server_factory.cpp  ${TMPSRC}/builtin_server_impl.h
+#)
+#target_link_libraries(builtin_server opcuabinary opcuacommon)
 
 set(TMPSRC xml_address_space_loader/src)
 add_library(xml_address_space_loader_addon SHARED 
@@ -76,20 +78,28 @@ add_library(opcua_tcp_server SHARED
     ${TMPSRC}/tcp_server_addon_impl.cpp  ${TMPSRC}/tcp_server.cpp        ${TMPSRC}/tcp_server_module.cpp
     ${TMPSRC}/tcp_server_addon_impl.h    ${TMPSRC}/tcp_server_factory.h
 )
+target_link_libraries(opcua_tcp_server opcuacommon)
+
+set(TMPSRC server/src)
+add_library(opcuaserver SHARED 
+    ${TMPSRC}/opcuaserver.cpp
+)
+target_link_libraries(opcuaserver opcuabinary opcuacommon )
+
+
 
 #command line server
 set(TMPSRC exe/src)
-add_executable(server 
+add_executable(server
     ${TMPSRC}/daemon.cpp  ${TMPSRC}/daemon.h  ${TMPSRC}/server_main.cpp  ${TMPSRC}/server_options.cpp  ${TMPSRC}/server_options.h
 )
-target_link_libraries(server opcuabinary opcuacommon ${Boost_LIBRARIES} dl)
+target_link_libraries(server opcuabinary opcuacommon ${Boost_LIBRARIES} )
 
 #example server
-set(TMPSRC example/src)
-add_executable(example_server 
-    ${TMPSRC}/daemon.cpp  ${TMPSRC}/daemon.h  ${TMPSRC}/server_main.cpp  ${TMPSRC}/server_options.cpp  ${TMPSRC}/server_options.h
+add_executable(example 
+    ${TMPSRC}/daemon.cpp  ${TMPSRC}/example.cpp
 )
-target_link_libraries(example_server opcuabinary opcuacommon  ${Boost_LIBRARIES} dl)
+target_link_libraries(example opcuaserver opcuabinary opcuacommon  ${Boost_LIBRARIES} )
 
 
 

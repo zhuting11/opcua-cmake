@@ -89,6 +89,8 @@ flags = [
 'server/tcp_server/include/',
 '-isystem',
 'server/xml_address_space_loader/include/',
+'-isystem',
+'server/server/include/',
 '-I',
 '.',
 ]

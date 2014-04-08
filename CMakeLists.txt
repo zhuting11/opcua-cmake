@@ -1,10 +1,11 @@
 cmake_minimum_required (VERSION 2.6)
 project (OPCUAlib)
 SET (CMAKE_CXX_COMPILER  "/usr/bin/clang++")
-SET(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -Wall ${CMAKE_CXX_FLAGS_DEBUG}" ) 
+SET(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -Wall ${CMAKE_CXX_FLAGS_DEBUG} " ) 
 #set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+SET(CMAKE_SHARED_LINKER_FLAGS "--no-undefined" )
 
-FIND_PACKAGE( Boost 1.40 COMPONENTS program_options filesystem REQUIRED )
+FIND_PACKAGE( Boost 1.40 COMPONENTS system program_options filesystem REQUIRED )
 INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 
 FIND_PACKAGE(LibXml2 REQUIRED )
@@ -16,5 +17,6 @@ add_subdirectory (mappings)
 add_subdirectory (core) 
 add_subdirectory (client) 
 add_subdirectory (server) 
+add_subdirectory (python) 
 
 
