@@ -24,8 +24,11 @@ include_directories(/usr/include/libxml2/ ) #HACK!!! should not be necessary
 
 
 #ADD_LIBRARY(pyopcua SHARED src/module.cpp)
-ADD_LIBRARY(opcua SHARED src/opcua.cpp)
-#set_target_properties(opcua PROPERTIES PREFIX "")
+add_definitions(-DMODULE_NAME=opcua)
+#SET(MODULE_NAME, "libopcua")
+#ADD_LIBRARY(opcua SHARED src/opcua.cpp)# src/module.cpp)
+ADD_LIBRARY(opcua SHARED src/module.cpp)
+set_target_properties(opcua PROPERTIES PREFIX "")
 TARGET_LINK_LIBRARIES(opcua opcuaserver opcuabinary opcuacommon opcua_client dl ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 
 
