@@ -5,7 +5,7 @@ SET(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -Wall ${CMAKE_CXX_FLAGS_DEBUG} " )
 #set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 SET(CMAKE_SHARED_LINKER_FLAGS "--no-undefined" )
 
-FIND_PACKAGE( Boost 1.40 COMPONENTS system program_options filesystem REQUIRED )
+FIND_PACKAGE( Boost 1.40 COMPONENTS system program_options filesystem thread REQUIRED )
 INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 
 FIND_PACKAGE(LibXml2 REQUIRED )

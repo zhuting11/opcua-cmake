@@ -57,7 +57,7 @@ add_library(address_space_addon SHARED
     ${TMPSRC}/address_space_addon.cpp  ${TMPSRC}/address_space_internal.cpp  ${TMPSRC}/address_space_module.cpp
     ${TMPSRC}/address_space_addon.h    ${TMPSRC}/address_space_internal.h
 )
-target_link_libraries(address_space_addon opcuabinary opcuacommon)
+target_link_libraries(address_space_addon opcuabinary opcuacommon ${Boost_LIBRARIES})
 
 #set(TMPSRC builtin_server/src)
 #add_library(builtin_server SHARED 

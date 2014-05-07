@@ -16,7 +16,7 @@ add_library(opc_tcp_client SHARED
     src/computer.cpp  
       src/endpoints.h 
         src/stream_attribute.h 
-          src/stream_computer.h 
+          src/stream_server.h 
             src/stream_subscription.h 
               src/stream_view.h
 )
