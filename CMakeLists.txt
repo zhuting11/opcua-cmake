@@ -1,9 +1,10 @@
 cmake_minimum_required (VERSION 2.6)
 project (OPCUAlib)
 SET (CMAKE_CXX_COMPILER  "/usr/bin/clang++")
+SET(CMAKE_SHARED_LINKER_FLAGS "--no-undefined" )
+
 SET(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -Wall ${CMAKE_CXX_FLAGS_DEBUG} " ) 
 #set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
-SET(CMAKE_SHARED_LINKER_FLAGS "--no-undefined" )
 
 FIND_PACKAGE( Boost 1.40 COMPONENTS system program_options filesystem thread REQUIRED )
 INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
