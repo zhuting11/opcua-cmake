@@ -13,7 +13,6 @@ include_directories(${SERVERDIR}/address_space/include )
 include_directories(${SERVERDIR}/tcp_server/include )
 include_directories(${SERVERDIR}/builtin_server/include )
 include_directories(${SERVERDIR}/xml_address_space_loader/include )
-include_directories(/usr/include/libxml2/ ) #HACK!!! should not be necessary
 include_directories(${SERVERDIR}/server/include)
 
 get_property(inc_dirs DIRECTORY PROPERTY INCLUDE_DIRECTORIES)
