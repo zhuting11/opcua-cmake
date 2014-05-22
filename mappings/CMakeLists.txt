@@ -2,12 +2,22 @@
 
 
 
-include_directories(include)
+include_directories(${MAPPINGSDIR}/include)
 
 #the OPCUA lib
 add_library(opcuabinary SHARED
-src/binary_attribute.cpp   src/binary_endpoints.cpp  src/binary_raw_size.cpp     src/binary_session.cpp  src/binary_variant.cpp  src/monitored_items.cpp  src/subscriptions.cpp
-src/binary_data_value.cpp  src/binary_messages.cpp   src/binary_serialization.h  src/binary_stream.cpp   src/binary_view.cpp     src/nodeid.cpp
-src/types.cpp
+    ${MAPPINGSDIR}/src/binary_attribute.cpp   
+    ${MAPPINGSDIR}/src/binary_endpoints.cpp  
+    ${MAPPINGSDIR}/src/binary_raw_size.cpp     
+    ${MAPPINGSDIR}/src/binary_session.cpp  
+    ${MAPPINGSDIR}/src/binary_variant.cpp  
+    ${MAPPINGSDIR}/src/monitored_items.cpp  
+    ${MAPPINGSDIR}/src/subscriptions.cpp
+    ${MAPPINGSDIR}/src/binary_data_value.cpp  
+    ${MAPPINGSDIR}/src/binary_messages.cpp   
+    ${MAPPINGSDIR}/src/binary_stream.cpp   
+    ${MAPPINGSDIR}/src/binary_view.cpp     
+    ${MAPPINGSDIR}/src/nodeid.cpp
+    ${MAPPINGSDIR}/src/types.cpp
 )
 

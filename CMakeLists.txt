@@ -12,6 +12,16 @@ INCLUDE_DIRECTORIES( ${Boost_INCLUDE_DIR} )
 FIND_PACKAGE(LibXml2 REQUIRED )
 INCLUDE_DIRECTORIES( ${LibXml2_INCLUDE_DIR} )
 
+message(STATUS "ROOT DIR IS: " ${CMAKE_SOURCE_DIR})
+
+set(MAPPINGSDIR ${CMAKE_SOURCE_DIR}/reps/opcua-mappings)
+set(COREDIR ${CMAKE_SOURCE_DIR}/reps/opcua-core)
+set(CLIENTDIR ${CMAKE_SOURCE_DIR}/reps/opcua-client)
+set(SERVERDIR ${CMAKE_SOURCE_DIR}/reps/opcua-server)
+set(PYTHONDIR ${CMAKE_SOURCE_DIR}/reps/opcua-python)
+
+get_property(inc_dirs DIRECTORY PROPERTY INCLUDE_DIRECTORIES)
+message(STATUS "ROOT INCLUDE DIR: "  ${inc_dirs})
 
 
 add_subdirectory (mappings) 
