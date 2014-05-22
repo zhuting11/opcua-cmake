@@ -5,9 +5,7 @@ include_directories(${MAPPINGSDIR}/include )
 include_directories(${COREDIR}/include )
 include_directories(${CLIENTDIR}/include )
 
-include_directories(/usr/include/libxml2/ ) #HACK!!! should not be necessary
 
-include_directories(include )
 #the OPCUA lib
 add_library(opc_tcp_client SHARED 
     ${CLIENTDIR}/src/binary_computer_addon.cpp  
