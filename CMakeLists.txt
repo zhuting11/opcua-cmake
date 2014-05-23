@@ -15,7 +15,7 @@ if( WIN32 )
 	set(LIBXML2_INCLUDE_DIR c:/lixml2/include/)
 	set(LIBXML2_LIBRARIES c:/lixml2/lib)
 else ( WIN32 )
-	find_package(LibXml2 REQUIRED PATHS c:/libxml2/ ) 
+	find_package(LibXml2 REQUIRED) 
 endif( WIN32 )
 include_directories( ${LIBXML2_INCLUDE_DIR} )
 message(STATUS "CML2 INCLUDE DIR IS: " ${LIBXML2_INCLUDE_DIR})
@@ -34,9 +34,9 @@ message(STATUS "ROOT INCLUDE DIR: "  ${inc_dirs})
 
 
 add_subdirectory (mappings) 
-#add_subdirectory (core) 
-#add_subdirectory (client) 
-#add_subdirectory (server) 
-#add_subdirectory (python) 
+add_subdirectory (core) 
+add_subdirectory (client) 
+add_subdirectory (server) 
+add_subdirectory (python) 
 
 
