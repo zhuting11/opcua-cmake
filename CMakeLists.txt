@@ -6,18 +6,20 @@ set(CMAKE_SHARED_LINKER_FLAGS "--no-undefined" )
 set(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -Wall ${CMAKE_CXX_FLAGS_DEBUG} " ) 
 #set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
 
-find_package( Boost 1.40 COMPONENTS system program_options filesystem thread REQUIRED )
+find_package( Boost  COMPONENTS system program_options filesystem thread REQUIRED )
 include_directories( ${Boost_INCLUDE_DIR} )
 message(STATUS "Boost INCLUDE DIR IS: " ${Boost_INCLUDE_DIR})
 message(STATUS "Boost INCLUDE DIR IS: " ${Boost_FOUND})
 
-find_package(LibXml2 REQUIRED )
+if( WIN32 )
+	set(LIBXML2_INCLUDE_DIR c:/lixml2/include/)
+	set(LIBXML2_LIBRARIES c:/lixml2/lib)
+else ( WIN32 )
+	find_package(LibXml2 REQUIRED PATHS c:/libxml2/ ) 
+endif( WIN32 )
 include_directories( ${LIBXML2_INCLUDE_DIR} )
 message(STATUS "CML2 INCLUDE DIR IS: " ${LIBXML2_INCLUDE_DIR})
-message(STATUS "CML2 INCLUDE DIR IS: " ${LIBXML2_INCLUDE_DIRS})
-message(STATUS "CML2 INCLUDE DIR IS: " ${LIBXML2_FOUND})
 message(STATUS "CML2 INCLUDE DIR IS: " ${LIBXML2_LIBRARIES})
-message(STATUS "CML2 INCLUDE DIR IS: " ${LIBXML2_INCLUDE_DIRS})
 
 message(STATUS "ROOT DIR IS: " ${CMAKE_SOURCE_DIR})
 
@@ -32,9 +34,9 @@ message(STATUS "ROOT INCLUDE DIR: "  ${inc_dirs})
 
 
 add_subdirectory (mappings) 
-add_subdirectory (core) 
-add_subdirectory (client) 
-add_subdirectory (server) 
-add_subdirectory (python) 
+#add_subdirectory (core) 
+#add_subdirectory (client) 
+#add_subdirectory (server) 
+#add_subdirectory (python) 
 
 
