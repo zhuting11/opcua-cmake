@@ -1,10 +1,15 @@
 cmake_minimum_required (VERSION 2.6)
-project (FreeOpcUa)
-set(CMAKE_CXX_COMPILER  "/usr/bin/clang++")
-set(CMAKE_SHARED_LINKER_FLAGS "--no-undefined" )
 
-set(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -Wall ${CMAKE_CXX_FLAGS_DEBUG} " ) 
-#set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+project (FreeOpcUa)
+
+if (NOT WIN32)
+    set(CMAKE_CXX_COMPILER  "/usr/bin/clang++")
+    set(CMAKE_SHARED_LINKER_FLAGS "--no-undefined" )
+
+    set(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -Wall ${CMAKE_CXX_FLAGS_DEBUG} " ) 
+    #set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} -Wall")
+endif (NOT WIN32)
+
 
 find_package( Boost  COMPONENTS system program_options filesystem thread REQUIRED )
 include_directories( ${Boost_INCLUDE_DIR} )
