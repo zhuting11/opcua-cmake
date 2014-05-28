@@ -3,6 +3,7 @@
 
 
 include_directories(${MAPPINGSDIR}/include)
+file(GLOB_RECURSE HEADERS ${MAPPINGSDIR}/include/*.h )
 
 #the OPCUA lib
 add_library(opcuabinary SHARED
@@ -19,5 +20,6 @@ add_library(opcuabinary SHARED
     ${MAPPINGSDIR}/src/binary_view.cpp     
     ${MAPPINGSDIR}/src/nodeid.cpp
     ${MAPPINGSDIR}/src/types.cpp
+    ${HEADERS}
 )
 

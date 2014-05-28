@@ -1,6 +1,7 @@
 
 include_directories(${MAPPINGSDIR}/include )
 include_directories(${COREDIR}/include )
+file(GLOB_RECURSE HEADERS ${COREDIR}/include/*.h )
 
 set(TMPSRC ${COREDIR}/src/)
 add_library(opcuacommon SHARED 
@@ -17,6 +18,7 @@ add_library(opcuacommon SHARED
     ${TMPSRC}/common/addons_core/dynamic_addon_factory.cpp  
     ${TMPSRC}/common/addons_core/dynamic_library.cpp  
     ${TMPSRC}/common/addons_core/errors_addon_manager.cpp
+    ${HEADERS}
 )
 target_link_libraries(opcuacommon opcuabinary ${Boost_LIBRARIES} dl xml2)
 
