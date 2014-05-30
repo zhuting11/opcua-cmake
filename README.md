@@ -2,7 +2,7 @@ Set of CMakeFiles hack to build the different opcua reps in one step at one plac
 
 usage:
 
-clone repositories under reps
-cd build
-cmake ..
-try the scripts and programs
+* clone repositories under reps
+* cd build
+* cmake ..
+* run scripts and programs, 
