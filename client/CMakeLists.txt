@@ -13,6 +13,7 @@ add_library(opc_tcp_client SHARED
     ${CLIENTDIR}/src/binary_computer.cpp        
     ${CLIENTDIR}/src/binary_secure_channel.cpp  
     ${CLIENTDIR}/src/computer.cpp  
+    ${CLIENTDIR}/src/errors.cpp  
 )
 target_link_libraries(opc_tcp_client opcuacommon opcuabinary)
 

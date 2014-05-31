@@ -18,6 +18,7 @@ add_library(opcuacommon SHARED
     ${TMPSRC}/common/addons_core/dynamic_addon_factory.cpp  
     ${TMPSRC}/common/addons_core/dynamic_library.cpp  
     ${TMPSRC}/common/addons_core/errors_addon_manager.cpp
+    ${TMPSRC}/opcua_errors.cpp
     ${HEADERS}
 )
 target_link_libraries(opcuacommon opcuabinary ${Boost_LIBRARIES} dl xml2)

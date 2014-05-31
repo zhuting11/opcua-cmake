@@ -8,6 +8,7 @@ file(GLOB_RECURSE HEADERS ${MAPPINGSDIR}/include/*.h )
 #the OPCUA lib
 add_library(opcuabinary SHARED
     ${MAPPINGSDIR}/src/binary_attribute.cpp   
+    ${MAPPINGSDIR}/src/binary_node_management.cpp   
     ${MAPPINGSDIR}/src/binary_endpoints.cpp  
     ${MAPPINGSDIR}/src/binary_raw_size.cpp     
     ${MAPPINGSDIR}/src/binary_session.cpp  
@@ -20,6 +21,7 @@ add_library(opcuabinary SHARED
     ${MAPPINGSDIR}/src/binary_view.cpp     
     ${MAPPINGSDIR}/src/nodeid.cpp
     ${MAPPINGSDIR}/src/types.cpp
+    ${MAPPINGSDIR}/src/input_from_buffer.cpp
     ${HEADERS}
 )
 

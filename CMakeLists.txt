@@ -40,8 +40,8 @@ message(STATUS "ROOT INCLUDE DIR: "  ${inc_dirs})
 
 add_subdirectory (mappings) 
 add_subdirectory (core) 
-#add_subdirectory (client) 
-#add_subdirectory (server) 
-#add_subdirectory (python) 
+add_subdirectory (client) 
+add_subdirectory (server) 
+add_subdirectory (python) 
 
 
