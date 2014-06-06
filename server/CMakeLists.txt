@@ -13,6 +13,7 @@ include_directories(${SERVERDIR}/address_space/include )
 include_directories(${SERVERDIR}/tcp_server/include )
 include_directories(${SERVERDIR}/builtin_server/include )
 include_directories(${SERVERDIR}/xml_address_space_loader/include )
+include_directories(${SERVERDIR}/standard_namespace/include )
 include_directories(${SERVERDIR}/server/include)
 
 get_property(inc_dirs DIRECTORY PROPERTY INCLUDE_DIRECTORIES)
@@ -68,7 +69,10 @@ target_link_libraries(xml_address_space_loader_addon opcuacommon opcuabinary xml
 
 set(TMPSRC ${SERVERDIR}/tcp_server/src)
 add_library(opcua_tcp_server SHARED 
-    ${TMPSRC}/tcp_server_addon_impl.cpp  ${TMPSRC}/tcp_server.cpp        ${TMPSRC}/tcp_server_module.cpp
+    ${TMPSRC}/tcp_server_addon_impl.cpp  
+    ${TMPSRC}/tcp_server_factory.cpp  
+    ${TMPSRC}/tcp_server.cpp        
+    ${TMPSRC}/tcp_server_module.cpp
 )
 target_link_libraries(opcua_tcp_server opcuacommon)
 
@@ -76,7 +80,7 @@ set(TMPSRC ${SERVERDIR}/server/src)
 add_library(opcuaserver SHARED 
     ${TMPSRC}/opcuaserver.cpp
 )
-target_link_libraries(opcuaserver opcuabinary opcuacommon services_registry_addon opcua_tcp_server endpoints_services_addon)
+target_link_libraries(opcuaserver opcuabinary opcuacommon standard_ns_addon opcua_protocol address_space_addon services_registry_addon opcua_tcp_server endpoints_services_addon)
 
 
 
