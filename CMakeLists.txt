@@ -39,7 +39,6 @@ set(SERVERDIR ${CMAKE_SOURCE_DIR}/reps/opcua-server)
 set(PYTHONDIR ${CMAKE_SOURCE_DIR}/reps/opcua-python)
 
 get_property(inc_dirs DIRECTORY PROPERTY INCLUDE_DIRECTORIES)
-#message(STATUS "ROOT INCLUDE DIR: "  ${inc_dirs})
 
 add_subdirectory (mappings) 
 add_subdirectory (core) 
@@ -51,5 +50,5 @@ add_subdirectory (python)
 #add_test("OPC-UAMappings" ${PROJECT_BINARY_DIR}/mappings/opcuabinary_tests )
 #endif()
 
-add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} --verbose DEPENDS opcuabinary_tests)
+add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure DEPENDS opcuabinary_tests)
 
