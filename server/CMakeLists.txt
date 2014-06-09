@@ -17,7 +17,6 @@ include_directories(${SERVERDIR}/standard_namespace/include )
 include_directories(${SERVERDIR}/server/include)
 
 get_property(inc_dirs DIRECTORY PROPERTY INCLUDE_DIRECTORIES)
-message(STATUS "SERVER INCLUDE DIR: "  ${inc_dirs})
 
 set(TMPSRC ${SERVERDIR}/services_registry/src)
 add_library(services_registry_addon SHARED 

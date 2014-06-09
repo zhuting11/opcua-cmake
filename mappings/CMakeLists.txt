@@ -22,6 +22,7 @@ add_library(opcuabinary SHARED
     ${MAPPINGSDIR}/src/nodeid.cpp
     ${MAPPINGSDIR}/src/types.cpp
     ${MAPPINGSDIR}/src/input_from_buffer.cpp
+    ${MAPPINGSDIR}/src/string_utils.cpp
     ${HEADERS}
 )
 
