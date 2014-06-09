@@ -30,7 +30,7 @@ if(COMPILETESTS)
     set(MAPPINGSTESTDIR ${MAPPINGSDIR}/tests)
     include_directories(${MAPPINGSTESTDIR})
 
-    add_executable(opcuabinary_tests 
+    add_executable(opcuabinary_tests EXCLUDE_FROM_ALL 
         ${MAPPINGSTESTDIR}/binary_deserialize.cpp
         ${MAPPINGSTESTDIR}/binary_serialize_variant.cpp
         ${MAPPINGSTESTDIR}/binary_serialize.cpp

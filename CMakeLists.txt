@@ -51,5 +51,5 @@ if(COMPILETESTS)
     add_test("OPC-UAMappings" ${PROJECT_BINARY_DIR}/mappings/opcuabinary_tests )
 endif()
 
-add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} --verbose)
+add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} --verbose DEPENDS opcuabinary_tests)
 
