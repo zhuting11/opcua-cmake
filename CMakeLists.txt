@@ -22,7 +22,15 @@ else ( WIN32 )
 endif( WIN32 )
 include_directories( ${LIBXML2_INCLUDE_DIR} )
 
-message(STATUS "ROOT DIR IS: " ${CMAKE_SOURCE_DIR})
+
+set(COMPILETESTS FALSE)
+find_package(GTest)
+if(GTEST_FOUND)
+    MESSAGE("GTest found Compiling tests")
+    enable_testing()
+    include_directories(${GTEST_INCLUDE_DIRS})
+    set(COMPILETESTS TRUE)
+endif()
 
 set(MAPPINGSDIR ${CMAKE_SOURCE_DIR}/reps/opcua-mappings)
 set(COREDIR ${CMAKE_SOURCE_DIR}/reps/opcua-core)
@@ -39,4 +47,9 @@ add_subdirectory (client)
 add_subdirectory (server) 
 add_subdirectory (python) 
 
+if(COMPILETESTS)
+    add_test("OPC-UAMappings" ${PROJECT_BINARY_DIR}/mappings/opcuabinary_tests )
+endif()
+
+add_custom_target(check COMMAND ${CMAKE_CTEST_COMMAND} --verbose)
 
