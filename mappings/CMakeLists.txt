@@ -26,7 +26,7 @@ add_library(opcuabinary SHARED
     ${HEADERS}
 )
 
-if(COMPILETESTS)
+if(BUILD_TESTS)
     set(MAPPINGSTESTDIR ${MAPPINGSDIR}/tests)
     include_directories(${MAPPINGSTESTDIR})
 
@@ -53,5 +53,5 @@ if(COMPILETESTS)
     target_link_libraries(opcuabinary_tests ${GTEST_BOTH_LIBRARIES} opcuabinary pthread)
 
 
-endif()
+endif(BUILD_TESTS)
 

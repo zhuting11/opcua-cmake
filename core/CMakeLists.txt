@@ -24,7 +24,7 @@ add_library(opcuacommon SHARED
 target_link_libraries(opcuacommon opcuabinary ${Boost_LIBRARIES} dl xml2)
 
 
-if(COMPILETESTS)
+if(BUILD_TESTS)
     set(CORETESTDIR ${COREDIR}/tests)
     include_directories(${CORETESTDIR})
 
@@ -34,9 +34,7 @@ if(COMPILETESTS)
         ${CORETESTDIR}/common/value_test.cpp
     )
     target_link_libraries(opcuacore_tests ${GTEST_BOTH_LIBRARIES} opcuabinary opcuacommon pthread cppunit)
-
-
-endif()
+endif(BUILD_TESTS)
 
 
 
