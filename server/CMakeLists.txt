@@ -31,7 +31,9 @@ target_link_libraries(services_registry_addon  opcuabinary opcuacommon)
 set(TMPSRC ${SERVERDIR}/endpoint_services/src)
 add_library(endpoints_services_addon SHARED 
     ${TMPSRC}/endpoints_parameters.cpp      
-    ${TMPSRC}/endpoints_services_addon.cpp  ${TMPSRC}/endpoints_services_module.cpp
+    ${TMPSRC}/endpoints_registry.cpp      
+    ${TMPSRC}/endpoints_services_addon.cpp  
+    ${TMPSRC}/endpoints_services_module.cpp
 )
 target_link_libraries(endpoints_services_addon opcuabinary)
 
@@ -68,7 +70,6 @@ target_link_libraries(xml_address_space_loader_addon opcuacommon opcuabinary xml
 
 set(TMPSRC ${SERVERDIR}/tcp_server/src)
 add_library(opcua_tcp_server SHARED 
-    ${TMPSRC}/tcp_server_addon_impl.cpp  
     ${TMPSRC}/tcp_server_factory.cpp  
     ${TMPSRC}/tcp_server.cpp        
     ${TMPSRC}/tcp_server_module.cpp
