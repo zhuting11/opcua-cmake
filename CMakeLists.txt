@@ -31,12 +31,8 @@ find_package( Boost  COMPONENTS system program_options filesystem thread REQUIRE
 include_directories( ${Boost_INCLUDE_DIR} )
 message(STATUS "Boost INCLUDE DIR IS: " ${Boost_INCLUDE_DIR})
 
-if( WIN32 )
-	set(LIBXML2_INCLUDE_DIR c:/lixml2/include/)
-	set(LIBXML2_LIBRARIES c:/lixml2/lib)
-else ( WIN32 )
-	find_package(LibXml2 REQUIRED) 
-endif( WIN32 )
+find_package(LibXml2 REQUIRED) 
+message(STATUS "LibXML2 INCLUDE DIR IS: " ${LIBXML2_INCLUDE_DIR})
 include_directories( ${LIBXML2_INCLUDE_DIR} )
 
 if(BUILD_TESTS)
