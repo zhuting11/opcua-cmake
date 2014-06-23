@@ -1,28 +1,25 @@
 
 
 
-include_directories(${MAPPINGSDIR}/include )
-include_directories(${COREDIR}/include )
-include_directories(${CLIENTDIR}/include )
+#include_directories(${MAPPINGSDIR}/include )
+#include_directories(${COREDIR}/include )
+#include_directories(${CLIENTDIR}/include )
 
 
 #the OPCUA lib
-add_library(opc_tcp_client SHARED 
-    ${CLIENTDIR}/src/binary_computer_addon.cpp  
-    ${CLIENTDIR}/src/binary_connection.cpp     
-    ${CLIENTDIR}/src/binary_computer.cpp        
-    ${CLIENTDIR}/src/binary_secure_channel.cpp  
-    ${CLIENTDIR}/src/computer.cpp  
-    ${CLIENTDIR}/src/errors.cpp  
+add_library(opcuaclient SHARED 
+    ${CLIENTDIR}/binary_computer_addon.cpp  
+    ${CLIENTDIR}/binary_connection.cpp     
+    ${CLIENTDIR}/binary_computer.cpp        
+    ${CLIENTDIR}/computer.cpp  
+    #${CLIENTDIR}/errors.cpp  
+    ${CLIENTDIR}/client.cpp
 )
-target_link_libraries(opc_tcp_client opcuacommon opcuabinary)
-
-add_library(opcua_client SHARED ${CLIENTDIR}/src/client.cpp )
-target_link_libraries(opcua_client opcuacommon opcuabinary opc_tcp_client)
+target_link_libraries(opcuaclient opcuacore opcuaprotocol)
 
 
-add_executable(client ${CLIENTDIR}/src/opcua_main.cpp  ${CLIENTDIR}/src/opcua_options.cpp)
-target_link_libraries(client opcuacommon opcuabinary)
+add_executable(client ${CLIENTDIR}/opcua_main.cpp  ${CLIENTDIR}/opcua_options.cpp)
+target_link_libraries(client opcuacore opcuaprotocol opcuaclient)
 
-add_executable(example_client ${CLIENTDIR}/src/example_main.cpp )
-target_link_libraries(example_client opcua_client )
+add_executable(example_client ${FREEOPCUAEXAMPLES}/example_client.cpp )
+target_link_libraries(example_client opcuaclient )

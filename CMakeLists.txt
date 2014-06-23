@@ -4,19 +4,11 @@ project (FreeOpcUa)
 option(CLANG "Build using Clang++" ON)
 
 option(BUILD_PYTHON "Build Python bindings" ON)
-option(BUILD_MAPPINGS "Build Mappings" ON)
+option(BUILD_PROTOCOL "Build Mappings" ON)
 option(BUILD_CORE "Build Core" ON)
 option(BUILD_CLIENT "Build Client" ON)
 option(BUILD_SERVER "Build Server" ON)
 option(BUILD_TESTS "Build Tests Target" ON)
-
-
-set(MAPPINGSDIR ${CMAKE_SOURCE_DIR}/reps/opcua-mappings)
-set(COREDIR ${CMAKE_SOURCE_DIR}/reps/opcua-core)
-set(CLIENTDIR ${CMAKE_SOURCE_DIR}/reps/opcua-client)
-set(SERVERDIR ${CMAKE_SOURCE_DIR}/reps/opcua-server)
-set(PYTHONDIR ${CMAKE_SOURCE_DIR}/reps/opcua-python)
-
 
 if(NOT WIN32)
     set(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -Wall ${CMAKE_CXX_FLAGS_DEBUG} " ) 
@@ -35,6 +27,21 @@ find_package(LibXml2 REQUIRED)
 message(STATUS "LibXML2 INCLUDE DIR IS: " ${LIBXML2_INCLUDE_DIR})
 include_directories( ${LIBXML2_INCLUDE_DIR} )
 
+
+set(FREEOPCUADIR ${CMAKE_SOURCE_DIR}/reps/freeopcua)
+set(FREEOPCUASRC ${CMAKE_SOURCE_DIR}/reps/freeopcua/src)
+set(FREEOPCUAINCLUDE ${CMAKE_SOURCE_DIR}/reps/freeopcua/include)
+set(FREEOPCUATESTS ${CMAKE_SOURCE_DIR}/reps/freeopcua/tests)
+set(FREEOPCUAEXAMPLES ${CMAKE_SOURCE_DIR}/reps/freeopcua/src/examples/)
+
+include_directories( ${FREEOPCUAINCLUDE})
+set(MAPPINGSDIR ${FREEOPCUASRC}/protocol)
+set(COREDIR ${FREEOPCUASRC}/core)
+set(CLIENTDIR ${FREEOPCUASRC}/client)
+set(SERVERDIR ${FREEOPCUASRC}/server)
+set(PYTHONDIR ${CMAKE_SOURCE_DIR}/reps/opcua-python)
+
+#FIXME: looke like freeopcua rep now include gmock and gtest!!!
 if(BUILD_TESTS)
     find_package(GTest)
     if(GTEST_FOUND)
@@ -48,14 +55,14 @@ if(BUILD_TESTS)
 endif()
 
 
-if(BUILD_MAPPINGS)
+if(BUILD_PROTOCOL)
     message(STATUS "Building Mappings")
-    add_subdirectory (mappings) 
+    add_subdirectory (protocol) 
     if(BUILD_TESTS)
         add_test("OPC-UAMappings" ${PROJECT_BINARY_DIR}/mappings/opcuabinary_tests )
         set(TEST_MAPPINGS_DEPEND opcuabinary_tests)
     endif(BUILD_TESTS)
-endif(BUILD_MAPPINGS)
+endif(BUILD_PROTOCOL)
 if(BUILD_CORE)
     message(STATUS "Building Core")
     add_subdirectory (core) 

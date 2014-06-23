@@ -1,10 +1,9 @@
 
-include_directories(${MAPPINGSDIR}/include )
-include_directories(${COREDIR}/include )
-file(GLOB_RECURSE HEADERS ${COREDIR}/include/*.h )
+#include_directories(${COREDIR}/include )
+#file(GLOB_RECURSE HEADERS ${COREDIR}/include/*.h )
 
-set(TMPSRC ${COREDIR}/src/)
-add_library(opcuacommon SHARED 
+set(TMPSRC ${COREDIR})
+add_library(opcuacore SHARED 
     ${TMPSRC}/socket_channel.cpp
     ${TMPSRC}/common/application.cpp  
     ${TMPSRC}/common/common_errors.cpp  
@@ -21,11 +20,11 @@ add_library(opcuacommon SHARED
     ${TMPSRC}/opcua_errors.cpp
     ${HEADERS}
 )
-target_link_libraries(opcuacommon opcuabinary ${Boost_LIBRARIES} dl xml2)
+target_link_libraries(opcuacore opcuaprotocol ${Boost_LIBRARIES} dl xml2)
 
 
 if(BUILD_TESTS)
-    set(CORETESTDIR ${COREDIR}/tests)
+    set(CORETESTDIR ${FREEOPCUATESTS}/core)
     include_directories(${CORETESTDIR})
 
     add_executable(opcuacore_tests EXCLUDE_FROM_ALL 
