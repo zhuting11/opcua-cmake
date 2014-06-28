@@ -21,7 +21,7 @@ add_library(opcuaserver SHARED
     ${SERVERDIR}/endpoints_services_addon.cpp  
     #${SERVERDIR}/endpoints_services_module.cpp
     ${SERVERDIR}/opc_tcp_processor.cpp  
-    #${SERVERDIR}/opcua_protocol_addon.cpp  
+    ${SERVERDIR}/opcua_protocol_addon.cpp  
     #${SERVERDIR}/opcua_protocol_module.cpp
     ${SERVERDIR}/standard_namespace_addon.cpp  
     ${SERVERDIR}/standard_namespace.cpp        

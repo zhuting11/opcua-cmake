@@ -24,6 +24,7 @@ add_library(opcuaprotocol SHARED
     ${MAPPINGSDIR}/input_from_buffer.cpp
     ${MAPPINGSDIR}/string_utils.cpp
     ${MAPPINGSDIR}/binary_secure_channel.cpp  
+    ${MAPPINGSDIR}/status_codes.cpp  
     ${HEADERS}
 )
 
