@@ -12,6 +12,7 @@ add_library(opcuacore SHARED
     ${TMPSRC}/common/thread.cpp  
     ${TMPSRC}/common/value.cpp 
     ${TMPSRC}/node.cpp
+    ${TMPSRC}/event.cpp
     ${TMPSRC}/common/addons_core/addon_manager.cpp  
     ${TMPSRC}/common/addons_core/config_file.cpp  
     ${TMPSRC}/common/addons_core/dynamic_addon_factory.cpp  
