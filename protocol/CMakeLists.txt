@@ -20,7 +20,6 @@ add_library(opcuaprotocol SHARED
     ${MAPPINGSDIR}/binary_stream.cpp   
     ${MAPPINGSDIR}/binary_view.cpp     
     ${MAPPINGSDIR}/nodeid.cpp
-    ${MAPPINGSDIR}/types.cpp
     ${MAPPINGSDIR}/input_from_buffer.cpp
     ${MAPPINGSDIR}/string_utils.cpp
     ${MAPPINGSDIR}/binary_secure_channel.cpp  
