@@ -1,1 +1,1 @@
-cppcheck --enable=all  -I include protocol/src core/src client/src server/src
+cppcheck --enable=all  -I include reps/freeopcua/src 

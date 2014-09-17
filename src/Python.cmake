@@ -30,7 +30,7 @@ INCLUDE_DIRECTORIES( ${PYTHON_INCLUDE_DIR} )
 
 
 add_definitions(-DMODULE_NAME=opcua)
-ADD_LIBRARY(opcua SHARED src/module.cpp)
+ADD_LIBRARY(opcua SHARED ${PYTHONDIR}/src/module.cpp)
 set_target_properties(opcua PROPERTIES PREFIX "")
 TARGET_LINK_LIBRARIES(opcua opcuaserver opcuaprotocol opcuacore opcuaclient ${Boost_LIBRARIES} ${PYTHON_LIBRARIES})
 

@@ -28,12 +28,12 @@ add_library(opcuaserver SHARED
     #${SERVERDIR}/standard_namespace_module.cpp
     ${SERVERDIR}/address_space_addon.cpp  
     ${SERVERDIR}/address_space_internal.cpp  
+    ${SERVERDIR}/subscription_service_internal.cpp  
     ${SERVERDIR}/internal_subscription.cpp  
     #${SERVERDIR}/address_space_module.cpp
     ${SERVERDIR}/xml_address_space_addon.cpp  
     ${SERVERDIR}/xml_address_space_loader.cpp 
     #${SERVERDIR}/xml_address_space_module.cpp 
-    ${SERVERDIR}/tcp_server_factory.cpp  
     ${SERVERDIR}/tcp_server.cpp        
     #${SERVERDIR}/tcp_server_module.cpp
     ${SERVERDIR}/opc_tcp_async_addon.cpp        

@@ -64,6 +64,8 @@ flags = [
 '-isystem',
 '/usr/lib/include/xml2',
 '-isystem',
+'/usr/include/python3.4',
+'-isystem',
 'reps/freeopcua/include/',
 '-isystem',
 'reps/freeopcua/src/protocol/',

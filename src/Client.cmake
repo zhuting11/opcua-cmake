@@ -8,11 +8,11 @@
 
 #the OPCUA lib
 add_library(opcuaclient SHARED 
-    ${CLIENTDIR}/binary_computer_addon.cpp  
+    ${CLIENTDIR}/binary_server_addon.cpp  
+    #${CLIENTDIR}/binary_computer_addon.cpp  
     ${CLIENTDIR}/binary_connection.cpp     
-    ${CLIENTDIR}/binary_computer.cpp        
-    ${CLIENTDIR}/computer.cpp  
-    #${CLIENTDIR}/errors.cpp  
+    ${CLIENTDIR}/binary_server.cpp        
+    #${CLIENTDIR}/binary_computer.cpp        
     ${CLIENTDIR}/client.cpp
 )
 target_link_libraries(opcuaclient opcuacore opcuaprotocol)
