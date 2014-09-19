@@ -8,7 +8,7 @@ set BOOST_LIBRARYDIR=C:\boost_1_55_0\lib64-msvc-12.0
 del CMakeCache.txt
 del *.vcx*
 del *.sln*
-cmake -DBUILD_PYTHON=NO -G "Visual Studio 12" ..
+cmake -DBUILD_PYTHON=NO -DBUILD_ADDON=OFF -G "Visual Studio 12" ..
 
 
-rem cmake --build . --target ALL_BUILD --config Debug
+rem cmake --build build --target ALL_BUILD --config Debug --D BUILD_ADDON=OFF -D BUILD_PYTHON=ON

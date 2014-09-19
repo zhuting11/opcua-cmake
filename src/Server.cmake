@@ -1,4 +1,7 @@
 
+if(WIN32)
+	file(GLOB SERVER_HEADERS_INTERNAL ${SERVERTDIR}/*.h )
+endif(WIN32)
 
 
 
@@ -37,6 +40,8 @@ endif(BUILD_ADDON)
 
 add_library(opcuaserver SHARED 
     ${SERVERSOURCES}
+    ${SERVER_HEADERS_INTERNAL}
+    ${SERVER_HEADERS}
 )
 target_link_libraries(opcuaserver opcuaprotocol opcuacore xml2 ${Boost_LIBRARIES} )
 

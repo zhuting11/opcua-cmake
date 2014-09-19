@@ -1,4 +1,7 @@
 
+if(WIN32)
+	file(GLOB CLIENT_HEADERS_INTERNAL ${CLIENTDIR}/*.h )
+endif(WIN32)
 
 
 
@@ -19,6 +22,9 @@ endif(BUILD_ADDON)
 
 add_library(opcuaclient SHARED 
     ${CLIENTSOURCES}
+    ${CLIENT_HEADERS}
+    ${CLIENT_HEADERS_INTERNAL}
+    ${HEADERS}
 )
 target_link_libraries(opcuaclient opcuacore opcuaprotocol)
 

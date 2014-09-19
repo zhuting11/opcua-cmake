@@ -29,6 +29,7 @@ endif(BUILD_ADDON)
 
 add_library(opcuacore SHARED 
     ${CORESOURCES}
+    ${HEADERS}
 )
 
 target_link_libraries(opcuacore opcuaprotocol ${Boost_LIBRARIES} dl xml2)

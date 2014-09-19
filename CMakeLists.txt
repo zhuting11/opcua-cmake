@@ -65,6 +65,15 @@ if(BUILD_TESTS)
 endif()
 
 
+
+if(WIN32) #include headers in windows for VS
+	file(GLOB HEADERS ${FREEOPCUADIR}/include/opc/ua/*.h )
+	file(GLOB PROTOCOL_HEADERS ${FREEOPCUADIR}/include/opc/ua/protocol/*.h )
+	file(GLOB CLIENT_HEADERS ${FREEOPCUADIR}/include/opc/ua/client/*.h )
+	file(GLOB SERVER_HEADERS ${FREEOPCUADIR}/include/opc/ua/server/*.h )
+	file(GLOB SERVICES_HEADERS ${FREEOPCUADIR}/include/opc/ua/services/*.h )
+endif(WIN32)
+
 if(BUILD_PROTOCOL)
     message(STATUS "Building Mappings")
     include(${CMAKE_CURRENT_SOURCE_DIR}/src/Protocol.cmake)
