@@ -3,12 +3,25 @@ project (FreeOpcUa)
 
 option(CLANG "Build using Clang++" ON)
 
-option(BUILD_PYTHON "Build Python bindings" ON)
-option(BUILD_PROTOCOL "Build Mappings" ON)
-option(BUILD_CORE "Build Core" ON)
-option(BUILD_CLIENT "Build Client" ON)
-option(BUILD_SERVER "Build Server" ON)
-option(BUILD_TESTS "Build Tests Target" OFF)
+#option(BUILD_PYTHON "Build Python bindings" ON)
+#option(BUILD_PROTOCOL "Build Mappings" ON)
+#option(BUILD_CORE "Build Core" ON)
+#option(BUILD_CLIENT "Build Client" ON)
+#option(BUILD_SERVER "Build Server" ON)
+#option(BUILD_TESTS "Build Tests Target" OFF)
+#options seems to behave strange so we use variables
+option(BUILD_ADDON "Build addon infrasttructure" OFF)
+
+set(BUILD_PYTHON ON)
+set(BUILD_PROTOCOL ON)
+set(BUILD_CORE ON)
+set(BUILD_CLIENT ON)
+set(BUILD_SERVER ON)
+set(BUILD_TESTS  OFF)
+
+
+set(BUILD_ADDON OFF)
+message(STATUS "Building Addon core " ${BUILD_ADDON})
 
 if(NOT WIN32)
     set(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -Wall ${CMAKE_CXX_FLAGS_DEBUG} " ) 
