@@ -20,8 +20,6 @@ option(BUILD_ADDON "Build addon infrasttructure" ON)
 #set(BUILD_TESTS  OFF)
 
 
-message(STATUS "Building Addon core " ${BUILD_ADDON})
-
 if(NOT WIN32)
     set(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -Wall ${CMAKE_CXX_FLAGS_DEBUG} " ) 
     if(CLANG)
