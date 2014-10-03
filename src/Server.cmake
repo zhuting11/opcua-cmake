@@ -3,6 +3,8 @@
 
 
 set(SERVERSOURCES
+	${SERVERDIR}/asio_addon.cpp 
+	${SERVERDIR}/server_object.cpp 
     ${SERVERDIR}/services_registry_impl.cpp
     ${SERVERDIR}/services_registry_factory.cpp  
     ${SERVERDIR}/services_registry_impl.cpp
@@ -19,6 +21,7 @@ set(SERVERSOURCES
     ${SERVERDIR}/opc_tcp_async_parameters.cpp        
 
     ${SERVERDIR}/opcuaserver.cpp
+    ${SERVERDIR}/server_object.cpp
 
     )
 
@@ -26,6 +29,7 @@ if(BUILD_ADDON)
     message(STATUS "Building Addon Server " ${BUILD_ADDON})
     set(SERVERSOURCES ${SERVERSOURCES}
         ${SERVERDIR}/endpoints_services_addon.cpp  
+        ${SERVERDIR}/server_object_addon.cpp  
         ${SERVERDIR}/opcua_protocol_addon.cpp  
         ${SERVERDIR}/opc_tcp_async_addon.cpp        
         ${SERVERDIR}/xml_address_space_addon.cpp  

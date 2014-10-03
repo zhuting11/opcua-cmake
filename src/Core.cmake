@@ -11,6 +11,11 @@ set(CORESOURCES
     ${TMPSRC}/event.cpp
     ${TMPSRC}/opcua_errors.cpp
     ${TMPSRC}/subscription.cpp
+    ${TMPSRC}/model_object.cpp
+    ${TMPSRC}/model_server.cpp
+    ${TMPSRC}/model_object_type.cpp
+    ${TMPSRC}/model_node.cpp
+    ${TMPSRC}/model_variable.cpp
     )
 
 if(BUILD_ADDON)

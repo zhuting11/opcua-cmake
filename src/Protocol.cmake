@@ -7,23 +7,23 @@
 
 #the OPCUA lib
 add_library(opcuaprotocol SHARED
+    ${MAPPINGSDIR}/binary_variant.cpp  
+    ${MAPPINGSDIR}/binary_stream.cpp   
     ${MAPPINGSDIR}/binary_attribute.cpp   
     ${MAPPINGSDIR}/binary_node_management.cpp   
+    ${MAPPINGSDIR}/binary_data_value.cpp  
     ${MAPPINGSDIR}/binary_endpoints.cpp  
+    ${MAPPINGSDIR}/binary_messages.cpp   
     ${MAPPINGSDIR}/binary_raw_size.cpp     
     ${MAPPINGSDIR}/binary_session.cpp  
-    ${MAPPINGSDIR}/binary_variant.cpp  
-    ${MAPPINGSDIR}/monitored_items.cpp  
-    ${MAPPINGSDIR}/subscriptions.cpp
-    ${MAPPINGSDIR}/binary_data_value.cpp  
-    ${MAPPINGSDIR}/binary_messages.cpp   
-    ${MAPPINGSDIR}/binary_stream.cpp   
     ${MAPPINGSDIR}/binary_view.cpp     
-    ${MAPPINGSDIR}/nodeid.cpp
     ${MAPPINGSDIR}/input_from_buffer.cpp
-    ${MAPPINGSDIR}/string_utils.cpp
-    ${MAPPINGSDIR}/status_codes.cpp  
+    ${MAPPINGSDIR}/monitored_items.cpp  
+    ${MAPPINGSDIR}/nodeid.cpp
     ${MAPPINGSDIR}/session.cpp  
+    ${MAPPINGSDIR}/subscriptions.cpp
+    ${MAPPINGSDIR}/status_codes.cpp  
+    ${MAPPINGSDIR}/string_utils.cpp
     ${HEADERS}
 )
 
