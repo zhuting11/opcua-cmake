@@ -2,7 +2,7 @@
 
 
 #the OPCUA lib
-add_library(opcuaprotocol SHARED
+add_library(opcuaprotocol 
     ${MAPPINGSDIR}/binary_attribute.cpp   
     ${MAPPINGSDIR}/binary_node_management.cpp   
     ${MAPPINGSDIR}/binary_endpoints.cpp  

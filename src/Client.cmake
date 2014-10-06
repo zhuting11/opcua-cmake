@@ -20,7 +20,7 @@ endif(BUILD_ADDON)
 
 
 
-add_library(opcuaclient SHARED 
+add_library(opcuaclient  
     ${CLIENTSOURCES}
     ${CLIENT_HEADERS}
     ${CLIENT_HEADERS_INTERNAL}

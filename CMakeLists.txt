@@ -26,12 +26,17 @@ if(NOT WIN32)
         set(CMAKE_CXX_COMPILER  "clang++-3.5")
         set(CMAKE_SHARED_LINKER_FLAGS "--no-undefined " )
     endif()
+    set(DL_LIBRARIES "dl")
+    set(BUILD_SHARED_LIBS "OFF")
+    INCLUDE_DIRECTORIES(c:/boost_1_55_0/lib64-msvc-12.0/)
+    LINK_DIRECTORIES(c:/boost_1_55_0/lib64-msvc-12.0)
 endif(NOT WIN32)
 
 
 find_package( Boost  COMPONENTS system program_options filesystem thread REQUIRED )
 include_directories( ${Boost_INCLUDE_DIR} )
 message(STATUS "Boost INCLUDE DIR IS: " ${Boost_INCLUDE_DIR})
+
 
 find_package(LibXml2 REQUIRED) 
 message(STATUS "LibXML2 INCLUDE DIR IS: " ${LIBXML2_INCLUDE_DIR})
