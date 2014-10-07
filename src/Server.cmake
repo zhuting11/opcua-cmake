@@ -1,4 +1,7 @@
 
+if(WIN32)
+	file(GLOB SERVER_HEADERS_INTERNAL ${SERVERTDIR}/*.h )
+endif(WIN32)
 
 
 
@@ -39,10 +42,12 @@ if(BUILD_ADDON)
 endif(BUILD_ADDON)
 
 
-add_library(opcuaserver SHARED 
+add_library(opcuaserver 
     ${SERVERSOURCES}
+    ${SERVER_HEADERS_INTERNAL}
+    ${SERVER_HEADERS}
 )
-target_link_libraries(opcuaserver opcuaprotocol opcuacore xml2 ${Boost_LIBRARIES} )
+target_link_libraries(opcuaserver opcuaprotocol opcuacore ${Boost_LIBRARIES} )
 
 
 
@@ -59,7 +64,6 @@ endif(BUILD_ADDON)
 #example server
 include_directories(${FREEOPCUADIR})
 add_executable(example_server
-    ${SERVERDIR}/daemon.cpp  
     ${FREEOPCUAEXAMPLES}/example_server.cpp
 )
 target_link_libraries(example_server opcuaserver opcuaprotocol opcuacore  ${Boost_LIBRARIES} )

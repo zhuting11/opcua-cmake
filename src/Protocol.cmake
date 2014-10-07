@@ -1,12 +1,8 @@
 
 
 
-
-#include_directories(${MAPPINGSDIR}/include)
-#file(GLOB_RECURSE HEADERS ${MAPPINGSDIR}/include/*.h )
-
 #the OPCUA lib
-add_library(opcuaprotocol SHARED
+add_library(opcuaprotocol 
     ${MAPPINGSDIR}/binary_variant.cpp  
     ${MAPPINGSDIR}/binary_stream.cpp   
     ${MAPPINGSDIR}/binary_attribute.cpp   
@@ -24,6 +20,7 @@ add_library(opcuaprotocol SHARED
     ${MAPPINGSDIR}/subscriptions.cpp
     ${MAPPINGSDIR}/status_codes.cpp  
     ${MAPPINGSDIR}/string_utils.cpp
+    ${PROTOCOL_HEADERS}
     ${HEADERS}
 )
 

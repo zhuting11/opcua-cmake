@@ -32,11 +32,12 @@ endif(BUILD_ADDON)
 
 
 
-add_library(opcuacore SHARED 
+add_library(opcuacore 
     ${CORESOURCES}
+    ${HEADERS}
 )
 
-target_link_libraries(opcuacore opcuaprotocol ${Boost_LIBRARIES} dl xml2)
+target_link_libraries(opcuacore opcuaprotocol ${Boost_LIBRARIES} ${DL_LIBRARIES} ${LIBXML2_LIBRARIES})
 
 
 if(BUILD_TESTS)

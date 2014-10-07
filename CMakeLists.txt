@@ -10,6 +10,7 @@ option(BUILD_CLIENT "Build Client" ON)
 option(BUILD_SERVER "Build Server" ON)
 option(BUILD_TESTS "Build Tests Target" OFF)
 option(BUILD_ADDON "Build addon infrasttructure" ON)
+set(BUILD_SHARED_LIBS "ON")
 
 #we can override options using variables
 #set(BUILD_PYTHON ON)
@@ -21,17 +22,22 @@ option(BUILD_ADDON "Build addon infrasttructure" ON)
 
 
 if(NOT WIN32)
-    set(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -Wall ${CMAKE_CXX_FLAGS_DEBUG} " ) 
+    set(CMAKE_CXX_FLAGS "-std=c++0x -ggdb -fPIC -Wall ${CMAKE_CXX_FLAGS_DEBUG} " ) 
     if(CLANG)
         set(CMAKE_CXX_COMPILER  "clang++-3.5")
         set(CMAKE_SHARED_LINKER_FLAGS "--no-undefined " )
     endif()
+    set(DL_LIBRARIES "dl")
+    set(BUILD_SHARED_LIBS "OFF")
+    INCLUDE_DIRECTORIES(c:/boost_1_55_0/lib64-msvc-12.0/)
+    LINK_DIRECTORIES(c:/boost_1_55_0/lib64-msvc-12.0)
 endif(NOT WIN32)
 
 
 find_package( Boost  COMPONENTS system program_options filesystem thread REQUIRED )
 include_directories( ${Boost_INCLUDE_DIR} )
 message(STATUS "Boost INCLUDE DIR IS: " ${Boost_INCLUDE_DIR})
+
 
 find_package(LibXml2 REQUIRED) 
 message(STATUS "LibXML2 INCLUDE DIR IS: " ${LIBXML2_INCLUDE_DIR})
@@ -64,6 +70,15 @@ if(BUILD_TESTS)
     endif()
 endif()
 
+
+
+if(WIN32) #include headers in windows for VS
+	file(GLOB HEADERS ${FREEOPCUADIR}/include/opc/ua/*.h )
+	file(GLOB PROTOCOL_HEADERS ${FREEOPCUADIR}/include/opc/ua/protocol/*.h )
+	file(GLOB CLIENT_HEADERS ${FREEOPCUADIR}/include/opc/ua/client/*.h )
+	file(GLOB SERVER_HEADERS ${FREEOPCUADIR}/include/opc/ua/server/*.h )
+	file(GLOB SERVICES_HEADERS ${FREEOPCUADIR}/include/opc/ua/services/*.h )
+endif(WIN32)
 
 if(BUILD_PROTOCOL)
     message(STATUS "Building Mappings")
